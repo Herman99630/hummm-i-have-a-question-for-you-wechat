@@ -64,7 +64,10 @@
     <view class="history-heading"><text>{{t.myInvites}}</text><text>{{t.refresh}}</text></view>
     <view class="history-row" wx:for="{{invitations}}" wx:key="id" data-id="{{item.id}}" bindtap="openResult">
       <view><text class="history-name">{{item.crushName}}</text><text class="history-date">{{item.createdLabel}}</text></view>
-      <text class="status {{item.status}}">{{item.statusLabel}}　›</text>
+      <view class="history-actions">
+        <text class="status {{item.status}}">{{item.statusLabel}}　›</text>
+        <button class="more-button" data-id="{{item.id}}" data-name="{{item.crushName}}" catchtap="openInviteMenu">···</button>
+      </view>
     </view>
   </view>
   <view class="made-with">Made with courage <text class="heart-mark">♥</text></view>

@@ -13,7 +13,7 @@ const copy = {
     confirmTitle: "最后确认一下吧", confirmSub: "这是我们说好的约会计划。", date: "日期", time: "时间", backup: "其他见面时间", plans: "约会安排", food: "想吃的东西",
     next: "确认并继续", submit: "我选好啦 ❤", sending: "正在保存…", back: "返回", select: "至少选一个才可以继续哦。",
     preview: "预览模式 · 不会记录答案", finishPreview: "预览完成，返回我的结果页", done: "想快点见到你！", doneSub: "你的选择已经保存好，约会计划也悄悄送达啦。💌", close: "好呀 ❤",
-    unavailable: "这个邀请不存在或已经失效。", answered: "这个邀请已经有人回答过啦。", failed: "暂时没有保存成功，请再试一次。", loading: "正在打开这份心动邀请…"
+    unavailable: "这份邀请已经结束啦 💌", answered: "这个邀请已经有人回答过啦。", failed: "暂时没有保存成功，请再试一次。", loading: "正在打开这份心动邀请…"
   },
   en: {
     tiny: "A tiny question for you", homeSub: "I promise it’ll be worth saying yes.", yes: "YES, of course ❤", no: "No",
@@ -27,7 +27,7 @@ const copy = {
     confirmTitle: "One last look", confirmSub: "Here’s our little plan, officially on the record.", date: "Date", time: "Time", backup: "Backup moments", plans: "Our plans", food: "Food shortlist",
     next: "Confirm and continue", submit: "All picked! ❤", sending: "Saving our little plan…", back: "Back", select: "Pick at least one option to keep going.",
     preview: "Preview · Answers aren’t recorded", finishPreview: "Finish preview—back to results", done: "I can’t wait to see you.", doneSub: "Your choices are saved and your little date plan is on its way. 💌", close: "See you soon ❤",
-    unavailable: "This invitation does not exist or has expired.", answered: "This invitation has already been answered.", failed: "It didn’t save. Please try again.", loading: "Opening this little invitation…"
+    unavailable: "This invitation has ended 💌", answered: "This invitation has already been answered.", failed: "It didn’t save. Please try again.", loading: "Opening this little invitation…"
   }
 };
 

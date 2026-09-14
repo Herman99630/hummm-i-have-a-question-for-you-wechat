@@ -32,9 +32,11 @@
 .history-row:last-child { border-bottom: 0; }
 .history-name { display: block; font-size: 27rpx; font-weight: 750; }
 .history-date { display: block; margin-top: 5rpx; color: #ab8993; font-size: 21rpx; }
+.history-actions { display: flex; align-items: center; gap: 10rpx; }
 .status { padding: 9rpx 15rpx; border-radius: 999rpx; background: #f6e9ec; color: #946675; font-size: 21rpx; }
 .status.answered { background: #e7f7ec; color: #397950; }
 .status.expired { opacity: .6; }
+.more-button { display: flex; align-items: center; justify-content: center; width: 58rpx; min-width: 58rpx; height: 58rpx; margin: 0; padding: 0; border-radius: 50%; background: #fff3f5; color: #9b6878; font-size: 26rpx; font-weight: 800; line-height: 1; }
 
 @media screen and (max-width: 360px) {
   .cover-title { font-size: 60rpx; }

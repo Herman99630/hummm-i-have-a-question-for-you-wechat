@@ -29,7 +29,12 @@ const copy = {
     refresh: "下拉刷新状态",
     empty: "还没有邀请，勇敢一次试试看。",
     invalid: "请把你和 TA 的名字填写完整。",
-    failed: "暂时没有创建成功，请稍后再试。"
+    failed: "暂时没有创建成功，请稍后再试。",
+    deleteInvitation: "删除这条邀请",
+    deleteTitle: "永久删除这条邀请？",
+    deleteBody: "删除后，邀请链接、双方名字和全部答案都会永久消失，无法恢复。",
+    deleteSuccess: "邀请已删除",
+    deleteFailed: "暂时无法删除，请稍后再试。"
   },
   en: {
     eyebrow: "Want the date? I’ll handle the nerves.",
@@ -61,7 +66,12 @@ const copy = {
     refresh: "Pull down to refresh",
     empty: "No invitations yet. Try one brave little click.",
     invalid: "Please complete both names.",
-    failed: "We couldn’t create it just now. Please try again."
+    failed: "We couldn’t create it just now. Please try again.",
+    deleteInvitation: "Delete invitation",
+    deleteTitle: "Delete this invitation?",
+    deleteBody: "The link, both names, and every answer will be permanently deleted. This cannot be undone.",
+    deleteSuccess: "Invitation deleted",
+    deleteFailed: "We couldn’t delete it just now. Please try again."
   }
 };
 
@@ -176,6 +186,47 @@ Page({
 
   openResult(event) {
     wx.navigateTo({ url: `/pages/result/index?id=${event.currentTarget.dataset.id}` });
+  },
+
+  openInviteMenu(event) {
+    const { id, name } = event.currentTarget.dataset;
+    wx.showActionSheet({
+      itemList: [this.data.t.deleteInvitation],
+      itemColor: "#b91c45",
+      success: ({ tapIndex }) => {
+        if (tapIndex === 0) this.confirmDelete(id, name);
+      }
+    });
+  },
+
+  confirmDelete(id) {
+    wx.showModal({
+      title: this.data.t.deleteTitle,
+      content: this.data.t.deleteBody,
+      confirmText: this.data.language === "zh" ? "永久删除" : "Delete",
+      confirmColor: "#b91c45",
+      cancelText: this.data.language === "zh" ? "取消" : "Cancel",
+      success: async ({ confirm }) => {
+        if (!confirm) return;
+        wx.showLoading({ title: this.data.language === "zh" ? "正在删除" : "Deleting", mask: true });
+        try {
+          const result = await wx.cloud.callFunction({ name: "deleteInvitation", data: { id } });
+          if (!result.result || !result.result.ok) throw new Error(result.result && result.result.error);
+          const nextData = { invitations: this.data.invitations.filter((item) => item.id !== id) };
+          if (this.data.invitation && this.data.invitation.id === id) {
+            nextData.invitation = null;
+            nextData.stage = "cover";
+          }
+          this.setData(nextData);
+          wx.showToast({ title: this.data.t.deleteSuccess, icon: "success" });
+        } catch (error) {
+          console.error("deleteInvitation", error);
+          wx.showToast({ title: this.data.t.deleteFailed, icon: "none" });
+        } finally {
+          wx.hideLoading();
+        }
+      }
+    });
   },
 
   resetForm() {

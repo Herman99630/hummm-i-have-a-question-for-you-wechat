@@ -25,7 +25,10 @@
         <view class="final-message">♥ {{t.final}}</view>
         <view class="safety-note">{{t.saved}}</view>
       </view>
-      <button class="back-pill result-home" bindtap="home">‹ {{t.home}}</button>
+      <view class="result-footer-actions">
+        <button class="back-pill result-home" bindtap="home">‹ {{t.home}}</button>
+        <button class="manage-button" bindtap="deleteInvitation">··· {{t.manage}}</button>
+      </view>
     </block>
   </view>
   <view class="made-with">Made with courage <text class="heart-mark">♥</text></view>

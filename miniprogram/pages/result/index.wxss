@@ -5,7 +5,9 @@
 .result-icon { margin-bottom: 20rpx; color: #c6315d; font-size: 90rpx; }
 .final-message { margin-top: 32rpx; padding: 26rpx; border-radius: 24rpx; background: linear-gradient(135deg, #ad1d49, #d9436e); color: #fff; font-family: "Yuanti SC", "STYuanti-SC-Bold", "YouYuan", "PingFang SC", sans-serif; font-size: 38rpx; font-weight: 900; box-shadow: 0 16rpx 32rpx rgba(166,30,71,.18); }
 .result-card .summary { text-align: left; }
-.result-home { display: flex; margin: 28rpx auto 0; }
+.result-footer-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14rpx; margin-top: 30rpx; }
+.result-home { display: flex; margin: 0; }
+.manage-button { display: inline-flex; align-items: center; justify-content: center; width: auto; min-height: 54rpx; margin: 0; padding: 0 20rpx; border-radius: 999rpx; background: #fff4f5; color: #9b6878; font-size: 22rpx; line-height: 54rpx; }
 
 @media screen and (max-width: 360px) {
   .waiting-image { height: 300rpx; }
