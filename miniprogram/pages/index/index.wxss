@@ -1,0 +1,23 @@
+.creator-card { padding-top: 76rpx; }
+.cover-copy { text-align: center; }
+.cover-copy .eyebrow { margin-top: 0; }
+.cover-bridge { margin: -2rpx 0 18rpx; color: #744351; font-size: 27rpx; font-weight: 650; line-height: 1.6; }
+.safe-note { margin-top: 22rpx; color: #9b7782; font-size: 22rpx; text-align: center; }
+.cover-image { display: block; width: 490rpx; height: 410rpx; margin: 14rpx auto 0; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12rpx; margin-top: 10rpx; }
+.steps view { padding: 18rpx 8rpx; border-radius: 22rpx; background: #fff4f4; text-align: center; }
+.steps text { display: block; color: #865566; font-size: 22rpx; }
+.steps text:first-child { margin-bottom: 7rpx; color: #b62752; font-size: 30rpx; font-weight: 800; }
+.form-title { font-size: 48rpx; }
+.ready-heart { width: 92rpx; height: 92rpx; margin: 20rpx auto 28rpx; border-radius: 50%; background: #b92754; color: white; font-size: 46rpx; font-weight: 800; line-height: 92rpx; text-align: center; box-shadow: 0 14rpx 32rpx rgba(174, 32, 76, .25); }
+.share-button { background: linear-gradient(135deg, #d13562, #94173f); }
+.history-card { box-sizing: border-box; max-width: 720rpx; margin: 28rpx auto 0; padding: 28rpx; border-radius: 32rpx; background: rgba(255,255,255,.82); box-shadow: 0 18rpx 54rpx rgba(101,36,56,.08); }
+.history-heading { display: flex; justify-content: space-between; margin-bottom: 10rpx; color: #5a1e31; font-size: 27rpx; font-weight: 800; }
+.history-heading text:last-child { color: #ac8792; font-size: 20rpx; font-weight: 500; }
+.history-row { display: flex; align-items: center; justify-content: space-between; padding: 22rpx 2rpx; border-bottom: 2rpx solid #f2e1e5; }
+.history-row:last-child { border-bottom: 0; }
+.history-name { display: block; font-size: 27rpx; font-weight: 750; }
+.history-date { display: block; margin-top: 5rpx; color: #ab8993; font-size: 21rpx; }
+.status { padding: 9rpx 15rpx; border-radius: 999rpx; background: #f6e9ec; color: #946675; font-size: 21rpx; }
+.status.answered { background: #e7f7ec; color: #397950; }
+.status.expired { opacity: .6; }

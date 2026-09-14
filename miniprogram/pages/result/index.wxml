@@ -1,0 +1,32 @@
+<view class="page-shell">
+  <view class="card result-card">
+    <view wx:if="{{loading}}" class="empty">💌<view class="hint">{{t.loading}}</view></view>
+    <view wx:elif="{{error}}" class="empty"><view class="result-icon">♡</view><view>{{error}}</view><button class="secondary-button" bindtap="home">{{t.home}}</button></view>
+    <block wx:else>
+      <view class="eyebrow">♥ {{t.private}}</view>
+      <view wx:if="{{!response}}">
+        <view class="title">{{t.waiting}}</view>
+        <image class="waiting-image" src="/images/couple-cats.png" mode="aspectFit" />
+        <view class="subtitle">{{t.waitingBody}}</view>
+        <view class="safety-note">🔒 {{t.safety}}</view>
+        <button class="primary-button" open-type="share">{{t.share}}　↗</button>
+        <button class="secondary-button" bindtap="preview">{{t.preview}}</button>
+        <view class="refresh-note">{{t.refresh}}</view>
+      </view>
+      <view wx:else>
+        <view class="title">{{invitation.crushName}} {{t.replied}}</view>
+        <view class="summary">
+          <view class="summary-row"><text class="summary-label">{{t.date}}</text><text class="summary-value">{{response.dateLabel || response.date}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.time}}</text><text class="summary-value">{{response.time}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.backup}}</text><text class="summary-value">{{backupLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.activities}}</text><text class="summary-value">{{activitiesLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.food}}</text><text class="summary-value">{{foodsLabel}}</text></view>
+        </view>
+        <view class="final-message">♥ {{t.final}}</view>
+        <view class="safety-note">{{t.saved}}</view>
+      </view>
+      <button class="text-button" bindtap="home">‹ {{t.home}}</button>
+    </block>
+  </view>
+  <view class="made-with">Made with courage <text class="heart-mark">♥</text></view>
+</view>

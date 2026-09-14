@@ -1,0 +1,119 @@
+<view class="page-shell invite-shell">
+  <view class="card invite-card">
+    <button class="language-toggle" bindtap="toggleLanguage">{{language === 'zh' ? '中文 / EN' : 'EN / 中文'}}</button>
+
+    <view wx:if="{{loading}}" class="empty">💌<view class="hint">{{t.loading}}</view></view>
+    <view wx:elif="{{fatal}}" class="empty"><view class="fatal-heart">♡</view><view>{{fatal}}</view><button class="secondary-button" bindtap="closeDone">{{language === 'zh' ? '回到首页' : 'Back home'}}</button></view>
+
+    <block wx:else>
+      <view wx:if="{{previewMode}}" class="preview-badge">{{t.preview}}</view>
+      <view wx:if="{{step > 1 && step < 6}}" class="progress">
+        <view class="progress-dot {{step >= 2 ? 'active' : ''}}"></view>
+        <view class="progress-dot {{step >= 3 ? 'active' : ''}}"></view>
+        <view class="progress-dot {{step >= 4 ? 'active' : ''}}"></view>
+        <view class="progress-dot {{step >= 5 ? 'active' : ''}}"></view>
+      </view>
+      <view wx:if="{{step > 0}}" class="back" bindtap="back">‹ {{t.back}}</view>
+
+      <view wx:if="{{step === 0}}" class="landing">
+        <view class="eyebrow">✦ {{t.tiny}}</view>
+        <view class="title">{{invitation.crushName}}{{language === 'zh' ? '，可以和我一起约会吗？' : ', can we have a date?'}}</view>
+        <view class="subtitle">{{t.homeSub}}</view>
+        <view wx:if="{{invitation.personalNote}}" class="personal-note">“{{invitation.personalNote}}”<text>— {{invitation.creatorName}}</text></view>
+        <image class="couple-image" src="/images/couple-cats.png" mode="aspectFit" />
+        <button class="primary-button" bindtap="next">{{t.yes}}</button>
+        <view class="no-zone">
+          <button class="runaway" style="transform: translate({{noX}}rpx, {{noY}}rpx)" bindtouchstart="dodgeNo">{{noText}}</button>
+        </view>
+      </view>
+
+      <view wx:elif="{{step === 1}}" class="shock">
+        <view class="shock-burst">{{language === 'zh' ? '天啊！' : 'OMG!'}}</view>
+        <view class="shock-hearts">♥　♥　♥</view>
+        <view class="eyebrow">✦ {{t.hold}}</view>
+        <view class="title">{{language === 'zh' ? '等一下！你真的点了愿意吗？！' : 'Wait… did you just say YES?!'}}</view>
+        <view class="shock-copy">{{t.shock}}</view>
+        <view class="hint">{{t.whisper}}</view>
+        <button class="primary-button" bindtap="next">{{t.yesYes}}</button>
+      </view>
+
+      <view wx:elif="{{step === 2}}">
+        <view class="step-kicker">{{t.step1}}</view>
+        <view class="title step-title">{{t.dateTitle}}</view>
+        <view class="picker-card">
+          <text class="picker-label">📅 {{language === 'zh' ? '选择日期' : 'Choose a date'}}</text>
+          <picker mode="date" value="{{date}}" start="{{minDate}}" end="{{maxDate}}" bindchange="changeDate">
+            <view class="picker-value">{{selectedDateLabel}}　›</view>
+          </picker>
+        </view>
+        <view class="picker-card">
+          <text class="picker-label">🕐 {{t.exact}}</text>
+          <picker mode="time" value="{{time}}" bindchange="changeTime">
+            <view class="picker-value">{{selectedTimeLabel}}　›</view>
+          </picker>
+          <view class="hint">{{t.ready}}</view>
+        </view>
+        <button class="primary-button" bindtap="next">{{t.next}}　›</button>
+      </view>
+
+      <view wx:elif="{{step === 3}}">
+        <view class="step-kicker">{{t.step2}}</view>
+        <view class="title step-title">{{t.otherTitle}}</view>
+        <view class="subtitle">{{t.multi}}</view>
+        <view class="choice-grid">
+          <view wx:for="{{extraTimes}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="times" data-key="{{item.key}}" bindtap="toggleChoice">{{item.label}}{{item.selected ? '　✓' : ''}}</view>
+        </view>
+        <view wx:if="{{error}}" class="error">{{error}}</view>
+        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+      </view>
+
+      <view wx:elif="{{step === 4}}">
+        <view class="step-kicker">{{t.step3}}</view>
+        <view class="title step-title">{{t.activityTitle}}</view>
+        <view class="subtitle">{{t.activitySub}}</view>
+        <view class="choice-grid">
+          <view wx:for="{{activities}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="activities" data-key="{{item.key}}" bindtap="toggleChoice"><text class="choice-emoji">{{item.emoji}}</text>{{item.label}}{{item.selected ? '　✓' : ''}}</view>
+        </view>
+        <view wx:if="{{error}}" class="error">{{error}}</view>
+        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+      </view>
+
+      <view wx:elif="{{step === 5}}">
+        <view class="step-kicker">{{t.step4}}</view>
+        <view class="title step-title">{{t.foodTitle}}</view>
+        <view class="subtitle">{{t.foodSub}}</view>
+        <view class="choice-grid">
+          <view wx:for="{{foods}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="foods" data-key="{{item.key}}" bindtap="toggleChoice"><text class="choice-emoji">{{item.emoji}}</text>{{item.label}}{{item.selected ? '　✓' : ''}}</view>
+        </view>
+        <view wx:if="{{error}}" class="error">{{error}}</view>
+        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+      </view>
+
+      <view wx:else>
+        <view class="eyebrow">✓ {{language === 'zh' ? '约会计划预览' : 'Your date plan'}}</view>
+        <view class="title step-title">{{t.confirmTitle}}</view>
+        <view class="subtitle">{{t.confirmSub}}</view>
+        <view class="summary">
+          <view class="summary-row"><text class="summary-label">{{t.date}}</text><text class="summary-value">{{selectedDateLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.time}}</text><text class="summary-value">{{selectedTimeLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.backup}}</text><text class="summary-value">{{backupLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.plans}}</text><text class="summary-value">{{activitiesLabel}}</text></view>
+          <view class="summary-row"><text class="summary-label">{{t.food}}</text><text class="summary-value">{{foodsLabel}}</text></view>
+        </view>
+        <view wx:if="{{error}}" class="error">{{error}}</view>
+        <button class="primary-button" loading="{{sending}}" disabled="{{sending}}" bindtap="submit">{{previewMode ? t.finishPreview : sending ? t.sending : t.submit}}</button>
+      </view>
+    </block>
+  </view>
+  <view class="made-with">{{language === 'zh' ? '鼓起了很多勇气才做出来' : 'Made with a suspicious amount of courage'}} <text class="heart-mark">♥</text></view>
+</view>
+
+<view wx:if="{{showDone}}" class="modal-backdrop">
+  <view class="done-card">
+    <view class="done-hearts">♥　♥　♥</view>
+    <view class="done-icon">♥</view>
+    <view class="done-title">{{t.done}}</view>
+    <view class="subtitle">{{t.doneSub}}</view>
+    <button class="primary-button" bindtap="closeDone">{{t.close}}</button>
+  </view>
+</view>

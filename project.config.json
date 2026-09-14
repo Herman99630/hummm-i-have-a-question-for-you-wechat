@@ -1,0 +1,16 @@
+{
+  "appid": "wx85ec75e4a6285e41",
+  "projectname": "hummm-i-have-a-question-for-you-wechat",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "useCompilerPlugins": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "packNpmManually": false,
+    "ignoreUploadUnusedFiles": true
+  }
+}

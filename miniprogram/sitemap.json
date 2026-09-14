@@ -1,0 +1,7 @@
+{
+  "desc": "允许微信索引小程序首页",
+  "rules": [
+    { "action": "allow", "page": "pages/index/index" },
+    { "action": "disallow", "page": "*" }
+  ]
+}

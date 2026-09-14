@@ -1,0 +1,64 @@
+<view class="page-shell">
+  <view class="card creator-card">
+    <button class="language-toggle" bindtap="toggleLanguage">{{language === 'zh' ? '中文 / EN' : 'EN / 中文'}}</button>
+
+    <block wx:if="{{stage === 'cover'}}">
+      <view class="cover-copy">
+        <view class="eyebrow">✦ {{t.eyebrow}}</view>
+        <view class="title">{{t.title}}</view>
+        <view class="cover-bridge">{{t.bridge}}</view>
+        <view class="subtitle">{{t.body}}</view>
+        <button class="primary-button" bindtap="begin">{{t.start}}　♥</button>
+        <view class="safe-note">✓ {{t.noAccount}}</view>
+      </view>
+      <image class="cover-image" src="/images/couple-cats.png" mode="aspectFit" />
+      <view class="steps">
+        <view><text>①</text><text>{{language === 'zh' ? '写下心意' : 'Write it'}}</text></view>
+        <view><text>②</text><text>{{language === 'zh' ? '发给 TA' : 'Share it'}}</text></view>
+        <view><text>③</text><text>{{language === 'zh' ? '收到答案' : 'Get the answer'}}</text></view>
+      </view>
+    </block>
+
+    <block wx:elif="{{stage === 'create'}}">
+      <view class="eyebrow">♥ {{language === 'zh' ? '别犹豫，勇敢追爱！' : 'A little courage goes a long way'}}</view>
+      <view class="title form-title">{{t.creatorTitle}}</view>
+      <view class="subtitle">{{t.creatorSub}}</view>
+      <label class="field">
+        <text class="field-label">{{t.yourName}}</text>
+        <input class="field-input" maxlength="30" value="{{creatorName}}" placeholder="{{t.yourPlaceholder}}" bindinput="updateCreator" />
+      </label>
+      <label class="field">
+        <text class="field-label">{{t.theirName}}</text>
+        <input class="field-input" maxlength="30" value="{{crushName}}" placeholder="{{t.theirPlaceholder}}" bindinput="updateCrush" />
+      </label>
+      <label class="field">
+        <text class="field-label">{{t.note}}</text>
+        <textarea class="field-textarea" maxlength="200" value="{{personalNote}}" placeholder="{{t.notePlaceholder}}" bindinput="updateNote" />
+        <text class="counter">{{personalNote.length}} / 200</text>
+      </label>
+      <view wx:if="{{error}}" class="error">{{error}}</view>
+      <button class="primary-button" loading="{{creating}}" disabled="{{creating}}" bindtap="createInvitation">{{creating ? t.creating : t.create}}　♥</button>
+      <button class="text-button" bindtap="backToCover">{{language === 'zh' ? '返回介绍页' : 'Back to introduction'}}</button>
+    </block>
+
+    <block wx:else>
+      <view class="ready-heart">✓</view>
+      <view class="eyebrow">{{invitation.creatorName}} + {{invitation.crushName}}</view>
+      <view class="title form-title">{{t.ready}}</view>
+      <view class="subtitle">{{t.readyBody}}</view>
+      <button class="primary-button share-button" open-type="share">{{t.share}}　↗</button>
+      <button class="secondary-button" bindtap="openCurrentResult">{{t.result}}</button>
+      <button class="text-button" bindtap="openPreview">{{t.preview}}</button>
+      <button class="text-button" bindtap="resetForm">{{t.another}}</button>
+    </block>
+  </view>
+
+  <view class="history-card" wx:if="{{invitations.length}}">
+    <view class="history-heading"><text>{{t.myInvites}}</text><text>{{t.refresh}}</text></view>
+    <view class="history-row" wx:for="{{invitations}}" wx:key="id" data-id="{{item.id}}" bindtap="openResult">
+      <view><text class="history-name">{{item.crushName}}</text><text class="history-date">{{item.createdLabel}}</text></view>
+      <text class="status {{item.status}}">{{item.statusLabel}}　›</text>
+    </view>
+  </view>
+  <view class="made-with">Made with courage <text class="heart-mark">♥</text></view>
+</view>

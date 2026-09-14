@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/invite/index",
+    "pages/result/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff7f5",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "心动邀请",
+    "backgroundColor": "#fff7f5",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
