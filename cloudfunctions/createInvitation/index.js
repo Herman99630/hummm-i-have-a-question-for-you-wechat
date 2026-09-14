@@ -38,7 +38,7 @@ exports.main = async (event) => {
     personalNote: personalNote || "",
     language,
     status: "pending",
-    response: null,
+    response: {},
     createdAt,
     answeredAt: null,
     expiresAt
