@@ -2,6 +2,7 @@ const cloud = require("wx-server-sdk");
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 const db = cloud.database();
+const _ = db.command;
 
 const allowedTimes = ["tonight", "afternoon", "ten-minutes", "after-work", "rainy-evening", "miss-me", "weekend", "after-yes"];
 const allowedActivities = ["dinner", "movie", "cozy-show", "walk", "drink", "museum", "karaoke", "sunset"];
@@ -39,7 +40,7 @@ exports.main = async (event) => {
     submittedAt: new Date()
   };
   const updated = await db.collection("invitations").where({ _id: invitation._id, status: "pending" }).update({
-    data: { status: "answered", response: safeResponse, answeredAt: new Date() }
+    data: { status: "answered", response: _.set(safeResponse), answeredAt: new Date() }
   });
   if (!updated.stats || updated.stats.updated !== 1) return { ok: false, error: "already_answered" };
   return { ok: true };
