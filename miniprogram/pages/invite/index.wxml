@@ -1,6 +1,6 @@
 <view class="page-shell invite-shell">
   <view class="card invite-card">
-    <button class="language-toggle" bindtap="toggleLanguage">中 / EN</button>
+    <button class="language-toggle" bindtap="toggleLanguage"><text class="language-label">中/EN</text></button>
 
     <view wx:if="{{loading}}" class="empty">💌<view class="hint">{{t.loading}}</view></view>
     <view wx:elif="{{fatal}}" class="empty"><view class="fatal-heart">♡</view><view>{{fatal}}</view><button class="secondary-button" bindtap="closeDone">{{language === 'zh' ? '回到首页' : 'Back home'}}</button></view>

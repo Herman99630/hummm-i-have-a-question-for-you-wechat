@@ -27,7 +27,7 @@
       </view>
       <view class="result-footer-actions">
         <button class="back-pill result-home" bindtap="home">‹ {{t.home}}</button>
-        <button class="manage-button" bindtap="deleteInvitation">··· {{t.manage}}</button>
+        <button class="manage-button" aria-label="{{t.manage}}" bindtap="deleteInvitation">⋯</button>
       </view>
     </block>
   </view>

@@ -7,7 +7,7 @@
 .result-card .summary { text-align: left; }
 .result-footer-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14rpx; margin-top: 30rpx; }
 .result-home { display: flex; margin: 0; }
-.manage-button { display: inline-flex; align-items: center; justify-content: center; width: auto; min-height: 54rpx; margin: 0; padding: 0 20rpx; border-radius: 999rpx; background: #fff4f5; color: #9b6878; font-size: 22rpx; line-height: 54rpx; }
+.manage-button { display: inline-flex; align-items: center; justify-content: center; width: 56rpx; min-width: 56rpx; height: 56rpx; min-height: 56rpx; margin: 0; padding: 0 0 9rpx; border-radius: 50%; background: transparent; color: #a57c89; font-size: 24rpx; font-weight: 800; line-height: 1; }
 
 @media screen and (max-width: 360px) {
   .waiting-image { height: 300rpx; }
