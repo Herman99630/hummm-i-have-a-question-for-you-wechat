@@ -1,4 +1,4 @@
-<view class="page-shell invite-shell">
+<view class="page-shell invite-shell {{language === 'en' ? 'lang-en' : 'lang-zh'}}">
   <view class="card invite-card">
     <button class="language-toggle" bindtap="toggleLanguage"><text class="language-label">中/EN</text></button>
 

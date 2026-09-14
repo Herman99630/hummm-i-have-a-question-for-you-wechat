@@ -27,9 +27,21 @@
 .done-title { margin-bottom: 18rpx; color: #52172a; font-family: "Yuanti SC", "STYuanti-SC-Bold", "YouYuan", "PingFang SC", sans-serif; font-size: 52rpx; font-weight: 900; }
 .done-card .primary-button { margin-left: auto; margin-right: auto; }
 
+.lang-en .landing .title { max-width: 570rpx; margin-left: auto; margin-right: auto; font-size: 56rpx; line-height: 1.05; }
+.lang-en .personal-note { font-family: "Heart Nunito", "Avenir Next Rounded", sans-serif; font-size: 26rpx; line-height: 1.48; }
+.lang-en .personal-note text { font-family: "Heart Nunito", "Avenir Next Rounded", sans-serif; }
+.lang-en .shock-title { max-width: 580rpx; margin-left: auto; margin-right: auto; font-size: 51rpx; line-height: 1.08; }
+.lang-en .shock-copy { max-width: 560rpx; margin-left: auto; margin-right: auto; font-size: 27rpx; line-height: 1.48; }
+.lang-en .step-title { max-width: 580rpx; margin-left: auto; margin-right: auto; font-size: 43rpx; line-height: 1.1; }
+.lang-en .picker-label { font-size: 24rpx; }
+.lang-en .done-title { font-family: "Heart Nunito", "Avenir Next Rounded", sans-serif; font-size: 48rpx; line-height: 1.08; }
+
 @media screen and (max-width: 360px) {
   .landing .title { font-size: 54rpx; }
   .couple-image { height: 340rpx; }
   .shock-title { font-size: 49rpx; }
   .picker-card { padding: 22rpx; }
+  .lang-en .landing .title { font-size: 49rpx; }
+  .lang-en .shock-title { font-size: 46rpx; }
+  .lang-en .step-title { font-size: 39rpx; }
 }

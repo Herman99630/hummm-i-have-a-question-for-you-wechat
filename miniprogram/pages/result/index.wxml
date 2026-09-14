@@ -1,4 +1,4 @@
-<view class="page-shell">
+<view class="page-shell {{language === 'en' ? 'lang-en' : 'lang-zh'}}">
   <view class="card result-card">
     <view wx:if="{{loading}}" class="empty">💌<view class="hint">{{t.loading}}</view></view>
     <view wx:elif="{{error}}" class="empty"><view class="result-icon">♡</view><view>{{error}}</view><button class="secondary-button" bindtap="home">{{t.home}}</button></view>

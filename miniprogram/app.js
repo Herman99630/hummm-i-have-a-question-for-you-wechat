@@ -1,5 +1,13 @@
+const nunitoFont = require("./fonts/nunito");
+
 App({
   onLaunch() {
+    wx.loadFontFace({
+      global: true,
+      family: "Heart Nunito",
+      source: 'url("' + nunitoFont + '")'
+    });
+
     if (!wx.cloud) {
       wx.showModal({
         title: "微信版本过低",

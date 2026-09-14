@@ -39,10 +39,21 @@
 .status.expired { opacity: .6; }
 .more-button { display: flex; align-items: center; justify-content: center; width: 56rpx; min-width: 56rpx; height: 56rpx; margin: 0; padding: 0 0 9rpx; border-radius: 50%; background: transparent; color: #b5929d; font-size: 24rpx; font-weight: 800; line-height: 1; }
 
+.lang-en .cover-title { max-width: 570rpx; margin: 30rpx auto 18rpx; font-size: 62rpx; line-height: 1.04; }
+.lang-en .cover-bridge { max-width: 550rpx; margin-left: auto; margin-right: auto; font-size: 27rpx; line-height: 1.42; }
+.lang-en .cover-body { max-width: 570rpx; font-size: 23rpx; line-height: 1.62; }
+.lang-en .safe-note { font-size: 21rpx; line-height: 1.45; }
+.lang-en .form-title { max-width: 580rpx; margin-left: auto; margin-right: auto; font-size: 50rpx; line-height: 1.08; }
+.lang-en .action-title { font-size: 23rpx; line-height: 1.25; }
+.lang-en .action-note { font-size: 18rpx; line-height: 1.35; }
+.lang-en .history-name { font-weight: 850; }
+
 @media screen and (max-width: 360px) {
   .cover-title { font-size: 60rpx; }
   .cover-bridge { font-size: 27rpx; }
   .cover-image { height: 360rpx; }
   .steps { gap: 8rpx; }
   .steps view { padding-left: 4rpx; padding-right: 4rpx; }
+  .lang-en .cover-title { font-size: 55rpx; }
+  .lang-en .form-title { font-size: 46rpx; }
 }

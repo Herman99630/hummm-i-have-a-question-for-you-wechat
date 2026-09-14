@@ -9,6 +9,9 @@
 .result-home { display: flex; margin: 0; }
 .manage-button { display: inline-flex; align-items: center; justify-content: center; width: 56rpx; min-width: 56rpx; height: 56rpx; min-height: 56rpx; margin: 0; padding: 0 0 9rpx; border-radius: 50%; background: transparent; color: #a57c89; font-size: 24rpx; font-weight: 800; line-height: 1; }
 
+.lang-en .result-card .title { max-width: 580rpx; margin-left: auto; margin-right: auto; font-size: 50rpx; line-height: 1.08; }
+.lang-en .final-message { font-family: "Heart Nunito", "Avenir Next Rounded", sans-serif; font-size: 35rpx; line-height: 1.18; letter-spacing: 0; }
+
 @media screen and (max-width: 360px) {
   .waiting-image { height: 300rpx; }
 }
