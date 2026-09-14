@@ -1,17 +1,19 @@
 <view class="page-shell">
   <view class="card creator-card">
-    <button class="language-toggle" bindtap="toggleLanguage">{{language === 'zh' ? '中文 / EN' : 'EN / 中文'}}</button>
+    <button class="language-toggle" bindtap="toggleLanguage">中 / EN</button>
 
     <block wx:if="{{stage === 'cover'}}">
       <view class="cover-copy">
         <view class="eyebrow">✦ {{t.eyebrow}}</view>
-        <view class="title">{{t.title}}</view>
-        <view class="cover-bridge">{{t.bridge}}</view>
-        <view class="subtitle">{{t.body}}</view>
-        <button class="primary-button" bindtap="begin">{{t.start}}　♥</button>
+        <view wx:if="{{language === 'zh'}}" class="title cover-title"><text>你负责心动</text><text class="title-accent">我负责开口</text></view>
+        <view wx:else class="title cover-title">{{t.title}}</view>
+        <view wx:if="{{language === 'zh'}}" class="cover-bridge"><text>有点紧张，但还是想约你</text><text>没关系，我陪你</text></view>
+        <view wx:else class="cover-bridge">{{t.bridge}}</view>
+        <view class="subtitle cover-body">{{t.body}}</view>
+        <button class="primary-button" bindtap="begin"><text>{{t.start}}</text><text class="button-icon">♥</text></button>
         <view class="safe-note">✓ {{t.noAccount}}</view>
       </view>
-      <image class="cover-image" src="/images/couple-cats.png" mode="aspectFit" />
+      <image class="cover-image" src="/images/love-bear.png" mode="aspectFit" />
       <view class="steps">
         <view><text>①</text><text>{{language === 'zh' ? '写下心意' : 'Write it'}}</text></view>
         <view><text>②</text><text>{{language === 'zh' ? '发给 TA' : 'Share it'}}</text></view>
@@ -37,8 +39,8 @@
         <text class="counter">{{personalNote.length}} / 200</text>
       </label>
       <view wx:if="{{error}}" class="error">{{error}}</view>
-      <button class="primary-button" loading="{{creating}}" disabled="{{creating}}" bindtap="createInvitation">{{creating ? t.creating : t.create}}　♥</button>
-      <button class="text-button" bindtap="backToCover">{{language === 'zh' ? '返回介绍页' : 'Back to introduction'}}</button>
+      <button class="primary-button" loading="{{creating}}" disabled="{{creating}}" bindtap="createInvitation"><text>{{creating ? t.creating : t.create}}</text><text wx:if="{{!creating}}" class="button-icon">♥</text></button>
+      <button class="back-pill form-back" bindtap="backToCover">‹ {{language === 'zh' ? '返回介绍页' : 'Back to introduction'}}</button>
     </block>
 
     <block wx:else>
@@ -46,10 +48,15 @@
       <view class="eyebrow">{{invitation.creatorName}} + {{invitation.crushName}}</view>
       <view class="title form-title">{{t.ready}}</view>
       <view class="subtitle">{{t.readyBody}}</view>
-      <button class="primary-button share-button" open-type="share">{{t.share}}　↗</button>
-      <button class="secondary-button" bindtap="openCurrentResult">{{t.result}}</button>
-      <button class="text-button" bindtap="openPreview">{{t.preview}}</button>
-      <button class="text-button" bindtap="resetForm">{{t.another}}</button>
+      <view class="ready-actions">
+        <button class="primary-button share-button" open-type="share"><text>{{t.share}}</text><text class="button-icon">♥</text></button>
+        <view class="share-hint">{{language === 'zh' ? '分享完成后，回来这里等 TA 的答案' : 'Come back here after sharing to wait for their answer.'}}</view>
+        <button class="secondary-button result-button" bindtap="openCurrentResult"><text>{{t.result}}</text><text class="button-icon">›</text></button>
+        <view class="aux-actions">
+          <button class="action-tile" bindtap="openPreview"><text class="action-icon">◉</text><text class="action-title">{{t.preview}}</text><text class="action-note">{{language === 'zh' ? '不会记录答案' : 'No answers saved'}}</text></button>
+          <button class="action-tile" bindtap="resetForm"><text class="action-icon">＋</text><text class="action-title">{{t.another}}</text><text class="action-note">{{language === 'zh' ? '创建另一条邀请' : 'Start another invitation'}}</text></button>
+        </view>
+      </view>
     </block>
   </view>
 

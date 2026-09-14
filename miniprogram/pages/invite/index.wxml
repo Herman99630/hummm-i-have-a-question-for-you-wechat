@@ -1,6 +1,6 @@
 <view class="page-shell invite-shell">
   <view class="card invite-card">
-    <button class="language-toggle" bindtap="toggleLanguage">{{language === 'zh' ? '中文 / EN' : 'EN / 中文'}}</button>
+    <button class="language-toggle" bindtap="toggleLanguage">中 / EN</button>
 
     <view wx:if="{{loading}}" class="empty">💌<view class="hint">{{t.loading}}</view></view>
     <view wx:elif="{{fatal}}" class="empty"><view class="fatal-heart">♡</view><view>{{fatal}}</view><button class="secondary-button" bindtap="closeDone">{{language === 'zh' ? '回到首页' : 'Back home'}}</button></view>
@@ -20,8 +20,8 @@
         <view class="title">{{invitation.crushName}}{{language === 'zh' ? '，可以和我一起约会吗？' : ', can we have a date?'}}</view>
         <view class="subtitle">{{t.homeSub}}</view>
         <view wx:if="{{invitation.personalNote}}" class="personal-note">“{{invitation.personalNote}}”<text>— {{invitation.creatorName}}</text></view>
-        <image class="couple-image" src="/images/couple-cats.png" mode="aspectFit" />
-        <button class="primary-button" bindtap="next">{{t.yes}}</button>
+        <image class="couple-image" src="/images/love-bear.png" mode="aspectFit" />
+        <button class="primary-button answer-yes" bindtap="next">{{t.yes}}</button>
         <view class="no-zone">
           <button class="runaway" style="transform: translate({{noX}}rpx, {{noY}}rpx)" bindtouchstart="dodgeNo">{{noText}}</button>
         </view>
@@ -31,10 +31,11 @@
         <view class="shock-burst">{{language === 'zh' ? '天啊！' : 'OMG!'}}</view>
         <view class="shock-hearts">♥　♥　♥</view>
         <view class="eyebrow">✦ {{t.hold}}</view>
-        <view class="title">{{language === 'zh' ? '等一下！你真的点了愿意吗？！' : 'Wait… did you just say YES?!'}}</view>
+        <view wx:if="{{language === 'zh'}}" class="title shock-title"><text>等一下！</text><text>你真的点了愿意吗？</text><text>你真的愿意吗？！</text></view>
+        <view wx:else class="title shock-title">Wait… did you just say YES?!</view>
         <view class="shock-copy">{{t.shock}}</view>
         <view class="hint">{{t.whisper}}</view>
-        <button class="primary-button" bindtap="next">{{t.yesYes}}</button>
+        <button class="primary-button shock-button" bindtap="next">{{t.yesYes}}</button>
       </view>
 
       <view wx:elif="{{step === 2}}">
@@ -53,7 +54,7 @@
           </picker>
           <view class="hint">{{t.ready}}</view>
         </view>
-        <button class="primary-button" bindtap="next">{{t.next}}　›</button>
+        <button class="primary-button" bindtap="next"><text>{{t.next}}</text><text class="button-icon">›</text></button>
       </view>
 
       <view wx:elif="{{step === 3}}">
@@ -64,7 +65,7 @@
           <view wx:for="{{extraTimes}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="times" data-key="{{item.key}}" bindtap="toggleChoice">{{item.label}}{{item.selected ? '　✓' : ''}}</view>
         </view>
         <view wx:if="{{error}}" class="error">{{error}}</view>
-        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+        <button class="primary-button" bindtap="continueChoices"><text>{{language === 'zh' ? '提交' : 'Submit'}}</text><text class="button-icon">›</text></button>
       </view>
 
       <view wx:elif="{{step === 4}}">
@@ -75,7 +76,7 @@
           <view wx:for="{{activities}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="activities" data-key="{{item.key}}" bindtap="toggleChoice"><text class="choice-emoji">{{item.emoji}}</text>{{item.label}}{{item.selected ? '　✓' : ''}}</view>
         </view>
         <view wx:if="{{error}}" class="error">{{error}}</view>
-        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+        <button class="primary-button" bindtap="continueChoices"><text>{{language === 'zh' ? '提交' : 'Submit'}}</text><text class="button-icon">›</text></button>
       </view>
 
       <view wx:elif="{{step === 5}}">
@@ -86,7 +87,7 @@
           <view wx:for="{{foods}}" wx:key="key" class="choice {{item.selected ? 'selected' : ''}}" data-group="foods" data-key="{{item.key}}" bindtap="toggleChoice"><text class="choice-emoji">{{item.emoji}}</text>{{item.label}}{{item.selected ? '　✓' : ''}}</view>
         </view>
         <view wx:if="{{error}}" class="error">{{error}}</view>
-        <button class="primary-button" bindtap="continueChoices">{{language === 'zh' ? '提交' : 'Submit'}}　›</button>
+        <button class="primary-button" bindtap="continueChoices"><text>{{language === 'zh' ? '提交' : 'Submit'}}</text><text class="button-icon">›</text></button>
       </view>
 
       <view wx:else>

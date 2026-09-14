@@ -155,8 +155,8 @@ Page({
     const lines = this.data.t.noLines;
     this.setData({
       noText: lines[Math.floor(Math.random() * lines.length)],
-      noX: Math.round((Math.random() - 0.5) * 230),
-      noY: Math.round((Math.random() - 0.5) * 120)
+      noX: Math.round((Math.random() - 0.5) * 170),
+      noY: Math.round((Math.random() - 0.5) * 54)
     });
   },
 

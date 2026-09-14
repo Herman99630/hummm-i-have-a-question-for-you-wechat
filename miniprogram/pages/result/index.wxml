@@ -6,10 +6,10 @@
       <view class="eyebrow">♥ {{t.private}}</view>
       <view wx:if="{{!response}}">
         <view class="title">{{t.waiting}}</view>
-        <image class="waiting-image" src="/images/couple-cats.png" mode="aspectFit" />
+        <image class="waiting-image" src="/images/love-bear.png" mode="aspectFit" />
         <view class="subtitle">{{t.waitingBody}}</view>
         <view class="safety-note">🔒 {{t.safety}}</view>
-        <button class="primary-button" open-type="share">{{t.share}}　↗</button>
+        <button class="primary-button" open-type="share"><text>{{t.share}}</text><text class="button-icon">♥</text></button>
         <button class="secondary-button" bindtap="preview">{{t.preview}}</button>
         <view class="refresh-note">{{t.refresh}}</view>
       </view>
@@ -25,7 +25,7 @@
         <view class="final-message">♥ {{t.final}}</view>
         <view class="safety-note">{{t.saved}}</view>
       </view>
-      <button class="text-button" bindtap="home">‹ {{t.home}}</button>
+      <button class="back-pill result-home" bindtap="home">‹ {{t.home}}</button>
     </block>
   </view>
   <view class="made-with">Made with courage <text class="heart-mark">♥</text></view>

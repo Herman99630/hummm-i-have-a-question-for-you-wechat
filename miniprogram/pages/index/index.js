@@ -20,8 +20,8 @@ const copy = {
     readyBody: "点击下面的按钮，把小程序卡片发给 TA。发完后回来就能查看结果。",
     share: "分享给 TA",
     preview: "先自己预览",
-    result: "进入我的结果页",
-    another: "再创建一个",
+    result: "查看我的结果",
+    another: "再创建一份",
     myInvites: "我发出的邀请",
     waiting: "等待回应",
     answered: "已经回复",
@@ -52,7 +52,7 @@ const copy = {
     readyBody: "Send the Mini Program card to your date. Come back here to see their response.",
     share: "Share with them",
     preview: "Preview invitation",
-    result: "Open my results",
+    result: "View my results",
     another: "Create another",
     myInvites: "My invitations",
     waiting: "Waiting",
@@ -179,7 +179,15 @@ Page({
   },
 
   resetForm() {
-    this.setData({ stage: "create", creatorName: "", crushName: "", personalNote: "", invitation: null, error: "" });
+    wx.showModal({
+      title: this.data.language === "zh" ? "再创建一份邀请？" : "Create another invitation?",
+      content: this.data.language === "zh" ? "当前邀请仍会保留在结果列表中。" : "Your current invitation will stay in your results.",
+      confirmText: this.data.language === "zh" ? "继续创建" : "Continue",
+      cancelText: this.data.language === "zh" ? "先等等" : "Not now",
+      success: ({ confirm }) => {
+        if (confirm) this.setData({ stage: "create", creatorName: "", crushName: "", personalNote: "", invitation: null, error: "" });
+      }
+    });
   },
 
   onShareAppMessage() {
